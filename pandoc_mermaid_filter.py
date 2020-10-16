@@ -7,7 +7,7 @@ import subprocess
 from pandocfilters import toJSONFilter, Para, Image
 from pandocfilters import get_filename4code, get_caption, get_extension
 
-MERMAID_BIN = os.environ.get('MERMAID_BIN', 'mermaid')
+MERMAID_BIN = os.environ.get('MERMAID_BIN', 'mmdc')
 
 
 def mermaid(key, value, format_, _):
