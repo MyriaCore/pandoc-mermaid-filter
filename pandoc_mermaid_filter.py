@@ -7,9 +7,7 @@ import subprocess
 from pandocfilters import toJSONFilter, Para, Image
 from pandocfilters import get_filename4code, get_caption, get_extension
 
-# Environment variables with fallback values
-MERMAID_BIN = os.path.expanduser(os.environ.get('MERMAID_BIN', 'mermaid'))
-PUPPETEER_CFG = os.environ.get('PUPPETEER_CFG', None)
+MERMAID_BIN = os.environ.get('MERMAID_BIN', 'mermaid')
 
 
 def mermaid(key, value, format_, _):
@@ -20,7 +18,7 @@ def mermaid(key, value, format_, _):
             caption, typef, keyvals = get_caption(keyvals)
 
             filename = get_filename4code("mermaid", code)
-            filetype = get_extension(format_, "png", html="svg", latex="png")
+            filetype = get_extension(format_, "svg", html="svg", latex="svg")
 
             src = filename + '.mmd'
             dest = filename + '.' + filetype
@@ -30,16 +28,7 @@ def mermaid(key, value, format_, _):
                 with open(src, "wb") as f:
                     f.write(txt)
 
-                # Default command to execute
-                cmd = [MERMAID_BIN, "-i", src, "-o", dest]
-
-                if PUPPETEER_CFG is not None:
-                    cmd.extend(["-p", PUPPETEER_CFG])
-
-                if os.path.isfile('.puppeteer.json'):
-                    cmd.extend(["-p", ".puppeteer.json"])
-
-                subprocess.check_call(cmd)
+                subprocess.check_call([MERMAID_BIN, "-i", src, "-o", dest])
                 sys.stderr.write('Created image ' + dest + '\n')
 
             return Para([Image([ident, [], keyvals], caption, [dest, typef])])
