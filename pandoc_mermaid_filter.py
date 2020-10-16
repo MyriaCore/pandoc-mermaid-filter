@@ -10,7 +10,7 @@ from pandocfilters import get_filename4code, get_caption, get_extension
 # Environment variables with fallback values
 MERMAID_BIN = os.path.expanduser(os.environ.get('MERMAID_BIN', 'mermaid'))
 PUPPETEER_CFG = os.environ.get('PUPPETEER_CFG', None)
-
+MERMAID_THEME = os.environ.get('MERMAID_THEME', None)
 
 def mermaid(key, value, format_, _):
     if key == 'CodeBlock':
@@ -35,6 +35,9 @@ def mermaid(key, value, format_, _):
 
                 if PUPPETEER_CFG is not None:
                     cmd.extend(["-p", PUPPETEER_CFG])
+                    
+                if MERMAID_THEME is not None:
+                    cmd.extend(["-t", MERMAID_THEME])
 
                 if os.path.isfile('.puppeteer.json'):
                     cmd.extend(["-p", ".puppeteer.json"])
