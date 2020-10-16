@@ -26,13 +26,13 @@ gantt
 
 Install it with pip:
 
-```
-pip install pandoc-mermaid-filter
+```sh
+pip install git+https://github.com/MyriaCore/pandoc-mermaid-filter.git
 ```
 
 And use it like any other pandoc filter:
 
-```
+```sh
 pandoc tests/sample.md -o sample.pdf --filter pandoc-mermaid
 ```
 
