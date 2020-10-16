@@ -42,11 +42,6 @@ The mermaid binary must be in your `$PATH` or can be set with the
 By setting the environment variable `PUPPETEER_CFG`, you can pass a custom
 configuration file to `mermaid` (`-p` option).
 
-## But there is ...
-
-There are a few other filters trying to convert mermaid code blocks however
-they all failed for me.
-
 ### Troubleshoot
 
 I've had to install the mermaid CLI locally instead of globally. See https://github.com/mermaidjs/mermaid.cli/issues/16
