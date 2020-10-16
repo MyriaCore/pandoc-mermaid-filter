@@ -42,6 +42,9 @@ The mermaid binary must be in your `$PATH` or can be set with the
 By setting the environment variable `PUPPETEER_CFG`, you can pass a custom
 configuration file to `mermaid` (`-p` option).
 
+Also, there is a `MERMAID_THEME` environment variable that gives you control
+over what themes will be used. 
+
 ### Troubleshoot
 
 I've had to install the mermaid CLI locally instead of globally. See https://github.com/mermaidjs/mermaid.cli/issues/16
